@@ -1,0 +1,7 @@
+# Runtime dependencies
+###############################################################################
+requests==2.21.0        # https://pypi.org/project/requests/
+
+# Debugging dependencies
+###############################################################################
+ipython==7.4.0          # https://pypi.org/project/ipython/

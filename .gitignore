@@ -1,0 +1,7 @@
+# Open FaaS usage and build folders
+template
+build
+
+# ALPR and Models
+alpr-response.json
+model.json
