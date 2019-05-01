@@ -4,4 +4,5 @@ build
 
 # ALPR and Models
 alpr-response.json
+alpr-bad-response.json
 model.json
