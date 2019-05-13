@@ -6,3 +6,6 @@ build
 alpr-response.json
 alpr-bad-response.json
 model.json
+
+# Pycache files
+fn-alpr/__pycache__/

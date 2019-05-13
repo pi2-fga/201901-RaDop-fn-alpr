@@ -3,17 +3,19 @@ import json
 import requests
 import uuid
 
+
 URL = 'https://api.openalpr.com/v2/recognize_bytes?recognize_vehicle=0' \
       '&country=br&secret_key={}'
 FN_CALL = 'alpr-call'
 KEY_LENGTH = 27
+
 
 def decode(encoded_key: str):
     try:
         decoded = base64.b64decode(encoded_key, validate=True)
         decoded = decoded.decode('utf-8').rstrip('\n')
         if len(decoded) != KEY_LENGTH:
-            raise Exception('The sent key isn\'t specified as expected.\n' \
+            raise Exception('The sent key isn\'t specified as expected.\n'
                             'Verify the sent key!!')
     except base64.binascii.Error as e:
         status_code = 500
@@ -38,13 +40,14 @@ def openalpr_api(private_key: str, image: str):
         if 'error_code' in response.keys():
             code = response['error_code']
             msg = response['error']
-            raise Exception(f'Error while calling ALPR API.\nTraceback:' \
+            raise Exception(f'Error while calling ALPR API.\nTraceback:'
                             f' {code} - {msg}')
-        elif 'data_type' in response.keys() and 'alpr_results' in response['data_type']:
+        elif 'data_type' in response.keys() and \
+             'alpr_results' in response['data_type']:
             identifier = str(uuid.uuid4())
             response['uuid'] = identifier
         else:
-            raise Exception(f'Unknown condition while receiving data from' \
+            raise Exception(f'Unknown condition while receiving data from'
                             f'ALPR API. Object received {response}.')
     except Exception as e:
         status_code = 500
@@ -79,15 +82,15 @@ def handle(req):
                   'Verify service to correct error'
             response = {'status_code': status_code, 'response_message': msg}
             return json.dumps(response)
-        
+
         decoded_key = decode(key)
 
         if type(decoded_key) is list:
             error = decoded_key
             return json.dumps(error)
-        
+
         call = openalpr_api(decoded_key, image)
-        
+
     except Exception as e:
         status_code = 500
         msg = f'Unknown error while trying to execute the ALPR service.' \
