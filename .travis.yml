@@ -7,9 +7,9 @@ services:
   - docker
 before_install:
   - pip install -U pip
-  - pip install -r requirements.txt
+  - pip install -r fn-alpr/requirements.txt
 before_script:
-  - flake8 src/
+  - flake8 fn-alpr/
 script:
   - pytest
 deploy:
