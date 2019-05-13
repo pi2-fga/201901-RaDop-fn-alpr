@@ -9,3 +9,4 @@ model.json
 
 # Pycache files
 fn-alpr/__pycache__/
+fn-alpr/**/__pycache__/
