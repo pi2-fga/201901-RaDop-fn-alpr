@@ -20,7 +20,7 @@ script:
   - pytest
   - coverage run -m pytest
 after_script:
-  - coverage xml
+  - py.test --cov=fn-alpr --cov-report xml fn-alpr/
   - cp docs/coverage.xml .
   - ./cc-test-reporter after-build -p $(pwd) --exit-code $TRAVIS_TEST_RESULT -t coverage.py
 deploy:
