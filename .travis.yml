@@ -3,15 +3,26 @@ sudo: required
 language: python
 python:
   - "3.7"
+env:
+  global:
+    - CC_TEST_REPORTER_ID=e451df381c119f6a9bd6491eb8acadaba9a7f39a12c3d7e70b6fb4b75ee54890
 services:
   - docker
 before_install:
   - pip install -U pip
   - pip install -r fn-alpr/requirements.txt
 before_script:
-  - flake8 fn-alpr/
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 script:
+  - flake8 fn-alpr/
   - pytest
+  - coverage run -m pytest
+after_script:
+  - coverage xml
+  - cp docs/coverage.xml .
+  - ./cc-test-reporter after-build -p $(pwd) --exit-code $TRAVIS_TEST_RESULT -t coverage.py
 deploy:
   provider: script
   script: bash deploy.sh

@@ -10,3 +10,4 @@ ipython==7.4.0          # https://pypi.org/project/ipython/
 ###############################################################################
 pytest==4.5.0           # https://pypi.org/project/pytest/
 flake8==3.7.7           # https://pypi.org/project/flake8/
+pytest-cov==2.7.1       # https://pypi.org/project/pytest-cov/

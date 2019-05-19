@@ -1,0 +1,6 @@
+[run]
+omit = fn-alpr/__init__.py
+       fn-alpr/**/__init__.py
+
+[xml]
+output = docs/coverage.xml
