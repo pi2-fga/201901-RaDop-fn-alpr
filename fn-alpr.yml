@@ -5,4 +5,4 @@ functions:
   fn-alpr:
     lang: python3
     handler: ./fn-alpr
-    image: fn-alpr:latest
+    image: radop/fn-alpr:latest

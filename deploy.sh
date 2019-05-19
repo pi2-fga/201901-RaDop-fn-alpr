@@ -6,4 +6,8 @@
 
 curl -sSL https://cli.openfaas.com | sudo sh
 
+echo $DOCKERHUB_PASS | docker login --username $DOCKERHUB_USER --password-stdin 
+
 faas-cli -f fn-alpr.yml build
+
+faas-cli -f fn-alpr.yml push
