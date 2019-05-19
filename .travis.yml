@@ -19,6 +19,7 @@ script:
   - flake8 fn-alpr/
   - pytest
   - coverage run -m pytest
+  - echo $DOCKERHUB_PASS | docker login --username $DOCKERHUB_USER --password-stdin
 after_script:
   - py.test --cov=fn-alpr --cov-report xml fn-alpr/
   - cp docs/coverage.xml .
@@ -26,5 +27,6 @@ after_script:
 deploy:
   provider: script
   script: bash deploy.sh
+  skip_cleanup: true
   on:
     branch: develop

@@ -1,9 +1,7 @@
 # FN-ALPR
 
 [![Build Status](https://travis-ci.org/radar-pi/fn-alpr.svg?branch=develop)](https://travis-ci.org/radar-pi/fn-alpr)
-
 [![Maintainability](https://api.codeclimate.com/v1/badges/e9d5767289e175c0cb18/maintainability)](https://codeclimate.com/github/radar-pi/fn-alpr/maintainability)
-
 [![Test Coverage](https://api.codeclimate.com/v1/badges/e9d5767289e175c0cb18/test_coverage)](https://codeclimate.com/github/radar-pi/fn-alpr/test_coverage)
 
 A **Função ALPR** é a função responsável por tratar as imagens recebidas do radar e enviar à API do ALPR para que seja feito o reconhecimento (_OCR_) dos caracteres da placa. Logo com o dado enviado para este serviço será retornado um relatório com as placas encontradas na imagem.
